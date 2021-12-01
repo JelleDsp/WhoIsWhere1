@@ -15,9 +15,10 @@ build-parameters:
      commands:
       - npm install
       - npx -p @sap/cds-dk cds build --production
-      - cp -r db/data gen/srv/srv/data
       - cds deploy
       - mv gen/srv/srv/apt.yml gen/srv
+      - cp db/my-whoIsWhere.db gen/srv/db
+
 
 modules:
  # --------------------- SERVER MODULE ------------------------
@@ -27,9 +28,6 @@ modules:
    path: gen/srv
    parameters:
      buildpack: nodejs_buildpack
-   requires:
-    # Resources extracted from CAP configuration
-    - name: WhoIsWhere-db
    provides:
     - name: srv-api      # required by consumers of CAP services (e.g. approuter)
       properties:

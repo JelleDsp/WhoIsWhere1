@@ -11,9 +11,18 @@
     "hdb": "^0.18.3",
     "node-pre-gyp": "^0.17.0",
     "sqlite3": "^5.0.2"
-  },
+  },"engines": {
+
+    "node": "14.18.0"},
   "scripts": {
-    "start": "cds run"
+    "start": "cds run",
+    "build": "run-s build:cds build:mta",
+    "build:cds": "cds build/all --clean",
+    "build:mta": "mbt build --mtar=whoiswhere.mtar",
+    "deploy": "run-s build cftarget deploy:cf",
+    "deploy:cf": "cf deploy mta_archives/whoiswhere.mtar -f",
+    "cftarget": "cf target -o Appgyver -s dev"
+
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
