@@ -9,10 +9,8 @@
         "@sap/cds": "^5",
         "express": "^4",
         "hdb": "^0.18.3",
+        "node-pre-gyp": "^0.17.0",
         "sqlite3": "^5.0.2"
-    },
-    "devDependencies": {
-        
     },
     "scripts": {
         "start": "cds run"
@@ -43,10 +41,10 @@
         }
     },
     "cds": {
-      "features": {
-        "fiori_preview": true,
-        "in_memory_db": true
-      },
+        "features": {
+            "fiori_preview": true,
+            "in_memory_db": true
+        },
         "requires": {
             "db": {
                 "kind": "sqlite",
@@ -55,6 +53,5 @@
                 }
             }
         }
-        
     }
 }
