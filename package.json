@@ -8,10 +8,11 @@
     "dependencies": {
         "@sap/cds": "^5",
         "express": "^4",
-        "hdb": "^0.18.3"
+        "hdb": "^0.18.3",
+        "sqlite3": "^5.0.2"
     },
     "devDependencies": {
-        "sqlite3": "^5.0.2"
+        
     },
     "scripts": {
         "start": "cds run"
@@ -48,7 +49,7 @@
       },
         "requires": {
             "db": {
-                "kind": "sql",
+                "kind": "sqlite",
                 "credentials": {
                     "database": "db/my-whoIsWhere.db"
                 }

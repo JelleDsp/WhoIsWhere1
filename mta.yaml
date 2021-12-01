@@ -16,6 +16,8 @@ build-parameters:
       - npm install
       - npx -p @sap/cds-dk cds build --production
       - cp -r db/data gen/srv/srv/data
+      - cds deploy
+      - mv gen/srv/srv/apt.yml gen/srv
 
 modules:
  # --------------------- SERVER MODULE ------------------------
@@ -33,29 +35,6 @@ modules:
       properties:
         srv-url: ${default-url}
 
- # -------------------- SIDECAR MODULE ------------------------
- - name: WhoIsWhere-db-deployer
- # ------------------------------------------------------------
-   type: hdb
-   path: gen/db  
-   parameters:
-     buildpack: nodejs_buildpack
-   requires:
-    # 'hana' and 'xsuaa' resources extracted from CAP configuration
-    - name: WhoIsWhere-db
-
-
-resources:
- # services extracted from CAP configuration
- # 'service-plan' can be configured via 'cds.requires.<name>.vcap.plan'
-# ------------------------------------------------------------
- - name: WhoIsWhere-db
-# ------------------------------------------------------------
-   type: com.sap.xs.hdi-container
-   parameters:
-     service: hana  # or 'hanatrial' on trial landscapes
-     service-plan: hdi-shared
-   properties:
-     hdi-service-name: ${service-name}
+ 
 
 
