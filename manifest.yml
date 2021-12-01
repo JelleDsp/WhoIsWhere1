@@ -1,0 +1,13 @@
+---
+applications:
+  # --------------------- SERVER MODULE ------------------------
+  - name: WhoIsWhere-srv
+    # ------------------------------------------------------------
+    type: nodejs
+    path: gen/srv
+    parameters:
+      buildpack: nodejs_buildpack
+    provides:
+      - name: srv-api # required by consumers of CAP services (e.g. approuter)
+        properties:
+          srv-url: ${default-url}
