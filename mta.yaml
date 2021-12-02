@@ -17,7 +17,7 @@ build-parameters:
         - npx -p @sap/cds-dk cds build --production
         - cds deploy
         - mv gen/srv/srv/apt.yml gen/srv
-        - cp whoIsWhere.db gen/srv/
+        - cp my-whoIsWhere.db gen/srv/
 modules:
   # --------------------- SERVER MODULE ------------------------
   - name: WhoIsWhere-srv
