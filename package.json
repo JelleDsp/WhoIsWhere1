@@ -22,8 +22,9 @@
     "build:mta": "mbt build --mtar=whoiswhere.mtar",
     "deploy": "run-s build cftarget deploy:cf",
     "deploy:cf": "cf deploy mta_archives/whoiswhere.mtar -f",
-    "deploy:srv": "npm run cftarget && cds build --production && cf push",
-    "cftarget": "cf target -o Appgyver -s dev"
+    "deploy:srv": "npm run cftarget && cds build --production && npm run copyFiles  && cf push",
+    "cftarget": "cf target -o Appgyver -s dev",
+    "copyFiles": "mv gen/srv/srv/apt.yml gen/srv && cp my-whoIsWhere.db gen/srv/"
   },
   "eslintConfig": {
     "extends": "eslint:recommended",
