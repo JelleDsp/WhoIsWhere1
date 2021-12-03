@@ -17,4 +17,6 @@ entity Person {
     key ID : Integer;
     Name : String;
     meetings : Composition of many Meeting on meetings.location = $self;
+    latitude: Double;
+	  longitude: Double;
   }
