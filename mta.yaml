@@ -26,7 +26,17 @@ modules:
     path: gen/srv
     parameters:
       buildpack: nodejs_buildpack
+      memory: 128M
+      disk-quota: 256M
     provides:
       - name: srv-api # required by consumers of CAP services (e.g. approuter)
         properties:
           srv-url: ${default-url}
+    properties:
+      CORS:
+        - uriPatern: .
+          allowedMethods:
+            - GET
+            - POST
+          allowedOrigin:
+            - host: '*'
